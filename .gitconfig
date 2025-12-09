@@ -1,0 +1,11 @@
+[alias]
+        a = add
+        s = status
+        P = pull
+        p = push
+        c = commit -m
+        b = branch
+        ch = checkout
+        pp = !git push --set-upstream origin $(git branch --show-current)
+        RS = reset
+        rs = restore
