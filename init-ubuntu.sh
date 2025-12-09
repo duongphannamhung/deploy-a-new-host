@@ -12,12 +12,15 @@ sudo apt install -y tmux curl git vim build-essential ca-certificates
 
 # Directory containing dotfiles (relative to script location)
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOTFILES_DIR="$SCRIPT_DIR/dotfiles"
+DOTFILES_DIR="."
 
 # Copy or symlink .bashrc, .bash_profile, and .gitconfig if they exist in dotfiles
 for file in .bashrc .bash_profile .gitconfig; do
     if [ -f "$DOTFILES_DIR/$file" ]; then
-        cp "$DOTFILES_DIR/$file" ~/
+        cat "$DOTFILES_DIR/$file" >> ~/$file
+        echo "$file appended to existing file in home directory."
+    else
+        cp "$DOTFILES_DIR/$file" ~/ 
         echo "$file copied to home directory."
     fi
 done
@@ -58,9 +61,11 @@ EOF
 
 sudo apt update
 # Install Docker Engine, CLI, and Containerd
-sudo apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 # Check status docker
 sudo systemctl status docker --no-pager
+
+sudo bash install-pathpicker.sh
 
 # Done
 echo "Init script completed. Please restart your shell."
