@@ -61,7 +61,7 @@ EOF
 
 sudo apt update
 # Install Docker Engine, CLI, and Containerd
-sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin unzip
 # Check status docker
 sudo systemctl status docker --no-pager
 
