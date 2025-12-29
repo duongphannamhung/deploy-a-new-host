@@ -30,3 +30,4 @@ alias _grs='g rs'
 alias _gcp='g cp'
 
 alias mk=minikube
+alias k=kubectl
